@@ -1,0 +1,65 @@
+<!-- Components info: https://webdev.dartlang.org/components -->
+<div>  <header>
+    <section class="header-content">
+        <h1 class="header-title animate-pop-in">Catalog Project</h1>
+        <p class="header-button animate-pop-in"></p>
+    </section>
+</header>
+
+    <material-input label="What do you need to do?"
+                    autoFocus floatingLabel style="width:80%"
+                    [(ngModel)]="newTodo"
+                    (keyup.enter)="add()">
+    </material-input>
+
+    <material-fab mini raised
+                  (trigger)="add()"
+                  [disabled]="newTodo.isEmpty">
+        <material-icon icon="add"></material-icon>
+    </material-fab>
+</div>
+
+<p *ngIf="items.isEmpty">
+    Nothing to do! Add items above.
+</p>
+
+<div *ngIf="categories.isNotEmpty">
+    <material-tab-panel>
+        <material-tab *ngFor="let cat of categories; let i=index" label="Lol">
+            <button>dsf</button>
+        </material-tab>
+    </material-tab-panel>
+</div>
+
+<div *ngIf="categories.isNotEmpty">
+    <div *ngFor="let cat of categories; let i=index">
+        <material-button width="300">{{cat}}</material-button>
+    </div>
+</div>
+
+<!--<div *ngIf="categories.isNotEmpty">-->
+<!--<div *ngFor="let category in categories; let i=index">-->
+<!--<button>Lolix</button>-->
+<!--</div>-->
+<!--</div>-->
+<div>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+    </mat-menu>
+</div>
+
+
+<div *ngIf="items.isNotEmpty">
+    <ul>
+        <li *ngFor="let item of items; let i=index">
+            <material-checkbox #done materialTooltip="Mark item as done">
+            </material-checkbox>
+            <span [class.done]="done.checked">{{item}}</span>
+            <material-fab mini (trigger)="remove(i)">
+                <material-icon icon="delete"></material-icon>
+            </material-fab>
+            <material-button>{{item}}</material-button>
+        </li>
+    </ul>
+</div>

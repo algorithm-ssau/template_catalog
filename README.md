@@ -1,1 +1,1 @@
-catalog_site_project
+Template site for online store (Catalog)
